@@ -1,11 +1,12 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { connectdb } from './server/config/serverdb.js';
-
+import { router } from './server/routers/routers.js';
 dotenv.config();
-
 connectdb()
+
 const app = express();
+app.use(router)
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
